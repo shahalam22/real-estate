@@ -4,9 +4,15 @@ import {
 } from "react-router-dom";
 import ListPage from './routes/listPage/ListPage';
 import HomePage from './routes/homePage/HomePage';
-import Layout from './routes/layout/Layout';
+import { Layout, RequiredAuth } from './routes/layout/Layout';
 import SinglePage from "./routes/singlePage/SinglePage";
 import ProfilePage from "./routes/profilePage/ProfilePage";
+import Login from "./routes/login/Login";
+import Register from "./routes/register/Register";
+import ProfileUpdatePage from "./routes/profileUpdatePage/ProfileUpdatePage";
+import NewPostPage from "./routes/newPostPage/NewPostPage";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
+
 
 function App() {
 
@@ -21,15 +27,13 @@ function App() {
         },
         {
           path: "/list",
-          element: <ListPage/>
+          element: <ListPage/>,
+          loader: listPageLoader,
         },
         {
           path: "/:id",
-          element: <SinglePage/>
-        },
-        {
-          path: "/profile",
-          element: <ProfilePage/>
+          element: <SinglePage/>,
+          loader: singlePageLoader,
         },
         {
           path:"/login",
@@ -38,7 +42,27 @@ function App() {
         {
           path:"/register",
           element:<Register/>
-        }
+        },
+        
+      ]
+    },
+    {
+      path: "/",
+      element: <RequiredAuth/>,
+      children: [
+        {
+          path: "/profile",
+          element: <ProfilePage/>,
+          loader: profilePageLoader,
+        },
+        {
+          path:"/profile/update",
+          element:<ProfileUpdatePage/>
+        },
+        {
+          path:"/add",
+          element:<NewPostPage/>
+        },
       ]
     }
   ]);
