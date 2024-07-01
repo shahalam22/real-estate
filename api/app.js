@@ -32,6 +32,8 @@ app.use("/api/messages", messageRouter);
 app.use("/api/test", testRoute);
 
 
-app.listen(8800, ()=>{
+const port = process.env.PORT || 8800
+
+app.listen(port, ()=>{
     console.log("Server is running on port 8800");
 })
