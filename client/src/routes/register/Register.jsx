@@ -19,7 +19,7 @@ function Register() {
     const password = formData.get("password");
 
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/register", {
+      const res = await axios.post("https://real-estate-backend-8uov.onrender.com/api/auth/register", {
         username,email,password
       })
 
