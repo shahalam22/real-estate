@@ -19,7 +19,7 @@ function Register() {
     const password = formData.get("password");
 
     try {
-      const res = await axios.post("https://regal-brioche-8c4966.netlify.app/api/auth/register", {
+      const res = await axios.post("https://dev-estate-saa21.netlify.app/api/auth/register", {
         username,email,password
       })
 
